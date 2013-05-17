@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+    </style>
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!--[if lt IE 9]>
+            <script src="js/vendor/html5-3.6-respond-1.1.0.min.js"></script>
+        <![endif]-->
+</head>
+<body>
+    <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+    <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="index.html">NETtoRoR</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li><a href="index.html#">Home</a></li>
+                        <li><a href="git.html">Git</a></li>
+                        <li><a href="RubyOnRails.html">RubyOnRails</a></li>
+                        <li class="active"><a href="Heroku.html">Heroku</a></li>
+                        <li><a href="TwitterBootstrap.html">Twitter Bootstrap</a></li>
+                        <li><a href="singlepage.html">SinglePage</a></li>                    
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <p>Heroku is a place for you to host your Rails app so the rest of the world can use it. It basically takes your git url and spawns some AWS virtual servers and hosts your app on them. Its free for low activity apps, which is sweet.</p>
+
+        <div class="subheading">Getting Started</div>
+        Install heroku gem (or heroku toolkit) etc. from the heroku page https://devcenter.heroku.com/articles/rails3
+    <pre class="prettyprint">
+        heroku run rake db:create
+        heroku run rake db:migrate
+        heroku create --stack cedar
+        git push heroku master
+    </pre>
+        <br />
+        If you want to deploy non-master branches to heroku you can run:
+    <pre class="prettyprint">
+        git push heroku yourbranch:master
+    (<a href="http://stackoverflow.com/questions/2971550/how-to-push-different-local-git-branches-to-heroku-master">Source</a>)
+    </pre>
+
+
+        <div class="subheading">Multiple Environments in Heroku</div>
+        <div class="subheading-summary">Dev/Test/Staging/Production - you can sperate them out in Heroku!</a></div>
+        <p>
+            Read: https://devcenter.heroku.com/articles/multiple-environments
+        </p>
+        <ul>
+            <li>PUSH TO STAGING:git push staging master/heroku run rake db:migrate --remote staging /heroku ps --remote staging</li>
+            <li>PUSH TO PRD:git push production master/heroku run rake db:migrate --remote production /heroku ps --remote production / heroku restart --remote production</li>
+        </ul>
+
+        <div class="subheading">Heroku Databases</div>
+        <ul>
+            <li>See all configurations variables, like the database URLs: heroku config --app btsocial-prd</li>
+            <li>Config element explanations:
+            <br />
+                DATABASE_URL = URL of the database thats currently being used by the application
+            <br />
+                HEROKU_POSTGRESQL_JADE_URL = url of a production postgres instance
+            <br />
+                SHARED_DATABASE_URL = default shared DB that came with the app
+            </li>
+            <li>All database  URLs are in format of postgres://username:password@host:port/database_name. That means you can use that URL and credtials to connect directly to the DB using a postgres admin UI tool. </li>
+        </ul>
+
+        <div class="subheading">Link up new git to old Heroku</div>
+        <div class="subheading-summary">I've got a new computer! Where are all my Heroku reomotes? Well, if theyre gone, re-add them.</div>
+        <ul>
+            <li>git remote add staging git@heroku.com:btsocial-stg.git</li>
+            <li>git remote add production git@heroku.com:btsocial-prd.git</li>
+        </ul>
+
+    </div>
+    <!-- /container -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+
+    <script src="js/vendor/bootstrap.min.js"></script>
+
+    <script src="js/main.js"></script>
+
+    <script>
+        var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+        (function (d, t) {
+            var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g, s)
+        }(document, 'script'));
+        </script>
+</body>
+</html>

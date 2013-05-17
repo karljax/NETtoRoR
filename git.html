@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+    </style>
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!--[if lt IE 9]>
+            <script src="js/vendor/html5-3.6-respond-1.1.0.min.js"></script>
+        <![endif]-->
+</head>
+<body>
+    <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+    <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="index.html">NETtoRoR</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li><a href="index.html#">Home</a></li>
+                        <li class="active"><a href="git.html">Git</a></li>
+                        <li><a href="RubyOnRails.html">RubyOnRails</a></li>
+                        <li><a href="Heroku.html">Heroku</a></li>
+                        <li><a href="TwitterBootstrap.html">Twitter Bootstrap</a></li>
+                        <li><a href="singlepage.html">SinglePage</a></li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="subheading">SVN to GIT</div>
+        <div class="subheading-summary">Of course im from svn , so the following translations are incredibly helpful</div>
+
+        <ul>
+            <li>svn checkout url:git clone url</li>
+            <li>svn update: git pull</li>
+            <li>svn commit : git commit -a && git push (full syntax is git push [alias] [branch], gits push = git push origin master)</li>
+            <li>svn revert:git checkout filename OR git reset --hard HEAD 
+            (<a href="http://bryan-murdock.blogspot.com/2007/07/git-revert-is-not-equivalent-to-svn.html">git-revert-is-not-equivalent-to-svn</a>)</li>
+        </ul>
+
+        <div class="subheading">Pull Requests in Github</div>
+        <div class="subheading-summary">I have a free Github account! Woah, someone just committed something to a fork of my github repository! Sweet! How do I pull it back into my master branch?</div>
+
+        <ul>
+            <li>Submit a pull request, click on link, 'merge pull'</li>
+        </ul>
+
+        <div class="subheading">Branching and Merging</div>
+        <div class="subheading-summary">Whats all this about branching? That doesnt work very well in svn, but its core to GIT</div>
+
+        <ul>
+            <li>Create the branch: $ git branch name_of_your_new_branch</li>
+            <li>Switch to branch : $ git checkout name_of_your_new_branch</li>
+            <li>See all branches: $ git branch </li>
+            <li>Delete a branch : $ git branch -d name_of_your_new_branch</li>
+            <li>Great reading on branching <a href="https://github.com/Kunena/Kunena-2.0/wiki/Create-a-new-branch-with-git-and-manage-branches">here</a> </li>
+            <li>I want to update my local branch from the remote (i.e. my local computers checkout of a github hosted branch) while discarding all my local changes
+            <pre class="prettyprint">
+                git checkout BRANCHNAME
+                git fetch --all
+                git reset --hard origin/BRANCHNAME
+            </pre>
+            </li>
+            <li>I want to merge BRANCH into MASTER overwriting anything in master
+            <pre class="prettyprint">
+                git checkout BRANCHNAME
+                git merge -s ours master
+                git checkout master
+                git merge BRANCHNAME
+                </pre>
+                (Note: the original 
+                <a href=" http://stackoverflow.com/questions/2862590/how-to-replace-master-branch-in-git-entirely-from-another-branch">StackOverflow Answer</a>
+                is great reading for some background)
+            </li>
+        </ul>
+
+        <footer>
+            <!--<p>&copy; Karl Jackson 2013</p>-->
+        </footer>
+
+    </div>
+    <!-- /container -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+
+    <script src="js/vendor/bootstrap.min.js"></script>
+
+    <script src="js/main.js"></script>
+
+    <script>
+        var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+        (function (d, t) {
+            var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g, s)
+        }(document, 'script'));
+        </script>
+</body>
+</html>
